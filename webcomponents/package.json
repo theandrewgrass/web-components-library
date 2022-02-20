@@ -1,12 +1,12 @@
 {
   "name": "webcomponents",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "",
   "main": "src/index",
-  "type": "module",
-  "module": "src/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,11 @@
   },
   "customElements": "custom-elements.json",
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.5.7"
+    "@custom-elements-manifest/analyzer": "^0.5.7",
+    "@storybook/addon-a11y": "^6.4.19",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/web-components": "^6.4.19"
   }
 }

@@ -19,13 +19,21 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/loading-button.js",
+      "path": "src/components/buttons/loading-button/loading-button.js",
       "declarations": [
         {
           "kind": "class",
           "description": "",
           "name": "LoadingButton",
           "members": [
+            {
+              "kind": "field",
+              "name": "doAction",
+              "type": {
+                "text": "Function"
+              },
+              "description": "The action to be performed when the button is clicked. Must return a Promise."
+            },
             {
               "kind": "method",
               "name": "handleEvent",
@@ -37,7 +45,7 @@
             },
             {
               "kind": "method",
-              "name": "_handleClick",
+              "name": "handleClick",
               "parameters": [
                 {
                   "name": "event"
@@ -54,44 +62,42 @@
             },
             {
               "kind": "field",
-              "name": "isLoading",
+              "name": "_isLoading",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "privacy": "public"
+              "privacy": "public",
+              "attribute": "_isLoading"
             },
             {
-              "type": {
-                "text": "Function"
-              },
-              "description": "The action to be performed when the button is clicked. Must return a Promise.",
-              "name": "doAction",
               "kind": "field",
-              "privacy": "public"
-            },
-            {
+              "name": "actionText",
               "type": {
                 "text": "String"
               },
+              "default": "'Load'",
               "description": "The text to be displayed on the button in its idle state. Should depict the action to be performed on click.",
-              "name": "actionText",
-              "kind": "field",
               "privacy": "public",
               "attribute": "actionText"
             },
             {
+              "kind": "field",
+              "name": "progressText",
               "type": {
                 "text": "String"
               },
+              "default": "'Loading'",
               "description": "The text to be displayed on the button in its loading state. Should depict the action in an active state (i.e. Save -> Saving).",
-              "name": "progressText",
-              "kind": "field",
               "privacy": "public",
               "attribute": "progressText"
             }
           ],
           "attributes": [
+            {
+              "name": "_isLoading",
+              "fieldName": "_isLoading"
+            },
             {
               "name": "actionText",
               "fieldName": "actionText"
@@ -115,7 +121,7 @@
           "name": "LoadingButton",
           "declaration": {
             "name": "LoadingButton",
-            "module": "src/components/loading-button.js"
+            "module": "src/components/buttons/loading-button/loading-button.js"
           }
         },
         {
@@ -123,7 +129,39 @@
           "name": "loading-button",
           "declaration": {
             "name": "LoadingButton",
-            "module": "src/components/loading-button.js"
+            "module": "src/components/buttons/loading-button/loading-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/buttons/loading-button/loading-button.stories.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "LoadingButton",
+          "parameters": [
+            {
+              "name": "args"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/components/buttons/loading-button/loading-button.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LoadingButton",
+          "declaration": {
+            "name": "LoadingButton",
+            "module": "src/components/buttons/loading-button/loading-button.stories.js"
           }
         }
       ]
