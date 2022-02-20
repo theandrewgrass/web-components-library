@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LoadingButton",
+          "declaration": {
+            "name": "LoadingButton",
+            "module": "src/index.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/loading-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LoadingButton",
+          "members": [
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "showLoadingState"
+            },
+            {
+              "kind": "method",
+              "name": "showIdleState"
+            },
+            {
+              "kind": "field",
+              "name": "isLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public"
+            },
+            {
+              "type": {
+                "text": "Function"
+              },
+              "description": "The action to be performed when the button is clicked. Must return a Promise.",
+              "name": "doAction",
+              "kind": "field",
+              "privacy": "public"
+            },
+            {
+              "type": {
+                "text": "String"
+              },
+              "description": "The text to be displayed on the button in its idle state. Should depict the action to be performed on click.",
+              "name": "actionText",
+              "kind": "field",
+              "privacy": "public",
+              "attribute": "actionText"
+            },
+            {
+              "type": {
+                "text": "String"
+              },
+              "description": "The text to be displayed on the button in its loading state. Should depict the action in an active state (i.e. Save -> Saving).",
+              "name": "progressText",
+              "kind": "field",
+              "privacy": "public",
+              "attribute": "progressText"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "actionText",
+              "fieldName": "actionText"
+            },
+            {
+              "name": "progressText",
+              "fieldName": "progressText"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "loading-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LoadingButton",
+          "declaration": {
+            "name": "LoadingButton",
+            "module": "src/components/loading-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "loading-button",
+          "declaration": {
+            "name": "LoadingButton",
+            "module": "src/components/loading-button.js"
+          }
+        }
+      ]
+    }
+  ]
+}
