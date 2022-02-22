@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
+import { styles } from './loading-button.css';
 
-const styles = css`
+export const styles = css`
   button {
     display: flex;
     align-items: center;
@@ -14,6 +15,10 @@ const styles = css`
     min-width: 150px;
     min-height: 50px;
     font-size: 16px;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
   }
 
   @keyframes spinner {
@@ -33,6 +38,7 @@ const styles = css`
 
 /**
  * @class LoadingButton
+ * @description A button that can be used to trigger an action while also showing the progress of that action.
  * @extends {LitElement}
  * @property {Function} [doAction] The action to be performed when the button is clicked. Must return a Promise.
  * @property {String} [actionText] The text to be displayed on the button in its idle state. Should depict the action to be performed on click.
@@ -54,57 +60,71 @@ export class LoadingButton extends LitElement {
     };
   }
   
-  static get styles() { return styles; }
+  static get styles() { return [styles]; }
   
   doAction() { 
     throw new Error("doAction must be implemented or else I don't know what to do!"); 
   };
 
-  handleEvent(event) {
+  async handleEvent(event) {
     switch (event.type) {
       case 'click':
-        this.handleClick(event);
+        await this.handleClick(event);
         break;
     }
   }
-
-  handleClick(event) {
+    
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('click', this);
+  }
+    
+  async handleClick(event) {
     event.preventDefault();
-    this._isLoading = true;
+    this.enterLoadingState();
 
     this.doAction()
       .then(() => {
-        this._isLoading = false;
+        this.exitLoadingState();
+      })
+      .catch((error) => {
+        console.error(error);
+        this.exitLoadingState();
       });
+  }
+
+  enterLoadingState() {
+    this._isLoading = true;
+  }
+
+  exitLoadingState() {
+    this._isLoading = false;
   }
 
   showLoadingState() {
     return html`
-      <span class="spinner"></span>
-      <span class="progress-text">${this.progressText}...</span>
+      <button disabled>
+        <span class="spinner"></span>
+        <span class="progress-text">${this.progressText}...</span>
+      </button>
     `;
   }
 
   showIdleState() {
     return html`
-      <span class="action-text">${this.actionText}</span>
-    `;
-  }
-  
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener('click', this);
-  }
+      <button>
+        <span class="action-text">${this.actionText}</span>
+      </button>
+      `;
+    }
 
   render() {
     return html`
-      <button>
-        ${
-          this._isLoading 
-            ? this.showLoadingState() 
-            : this.showIdleState()
-        }
-      </button>
+      ${
+        this._isLoading 
+          ? this.showLoadingState() 
+          : this.showIdleState()
+      }
     `;
   }
 }

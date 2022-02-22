@@ -1,0 +1,62 @@
+import { html } from 'lit-html';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import './loading-button';
+
+<Meta
+  title='Buttons/LoadingButton'
+  component='loading-button'
+  args={{
+    actionText: 'Load',
+    progressText: 'Loading',
+    loadTime: 2,
+  }}
+  argTypes={{
+    actionText: { 
+      name: 'Action Text',
+      control: { type: 'text' } 
+    },
+    progressText: { 
+      name: 'Progress Text',
+      control: { type: 'text' } 
+    },
+    loadTime: {
+      name: 'Load Time (seconds)',
+      control: { type: 'number', min: 0, max: 10, step: 1 },
+    },
+    _isLoading: { table: { disable: true } },
+    doAction: { table: { disable: true } },
+  }}
+/>
+
+export const Template = (args) => {
+  let loadTimeMs = args.loadTime * 1000;
+  const action = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, loadTimeMs);
+    });
+  }
+  return html`
+    <loading-button 
+      actionText=${args.actionText}
+      progressText=${args.progressText}
+      .doAction=${action} 
+    />
+  `;
+}
+
+# Loading Button
+
+A button that can be used to trigger an action while also showing the progress of that action.
+
+A callback function that returns a promise should be passed to the `doAction` property.
+This is so when the action is completed or fails the button can exit the loading state.
+
+<Canvas>
+  <Story name='LoadingButton'>
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<ArgsTable of='loading-button' />
