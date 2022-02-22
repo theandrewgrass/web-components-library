@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import { styles } from './loading-button.css';
 
 export const styles = css`
   button {
