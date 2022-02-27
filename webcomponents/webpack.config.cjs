@@ -8,14 +8,18 @@ module.exports = {
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.css$/,
-        use: ['lit-css-loader'],
-        options: {
-          specifier: 'lit-element' // defaults to `lit`
-        }
+        use: {
+          loader: 'lit-css-loader',
+          options: {
+            specifier: 'lit-element' // defaults to `lit`
+          },
+        },
       }
     ]
   },

@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import 'Components/animations/basic-spinner';
 
 export const styles = css`
   button {

@@ -4,6 +4,12 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "dist/shared-components.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/index.js",
       "declarations": [],
       "exports": [
