@@ -1,5 +1,4 @@
 import { useRef,  useEffect } from 'react';
-import logo from './logo.svg';
 import 'webcomponents';
 import './App.css';
 
@@ -20,25 +19,27 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Web Components Demo</h1>
+      <h2>Currently inside a React Application</h2>
+      <p>Press the button below to try it out!</p>
+      <p style={{fontSize: "32px"}}>👇</p>
+
       <loading-button
         ref={loadingButtonRef}
         actionText="Save"
-        progressText="Saving"        
-      />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        progressText="Saving"
+        completedText="Saved"        
+      >
+        
+        <kobo-animation slot="loading-indicator">
+          <basic-spinner slot="animation"></basic-spinner>
+        </kobo-animation>
+        
+        <kobo-animation slot="success-indicator">
+          <kobo-checkmark slot="animation"></kobo-checkmark>
+        </kobo-animation>
+
+      </loading-button>
     </div>
   );
 }
