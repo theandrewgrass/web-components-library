@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import 'Components/animations/basic-spinner';
 
 export const styles = css`
   button {
@@ -9,10 +10,11 @@ export const styles = css`
     background-color: #fff;
     border: 1px solid #444;
     border-radius: 25px;
-    padding: 5px 15px;
+    padding: 15px;
     cursor: pointer;
     min-width: 150px;
-    min-height: 50px;
+    width: 100%;
+    height: 50px;
     font-size: 16px;
   }
 
@@ -20,18 +22,13 @@ export const styles = css`
     cursor: not-allowed;
   }
 
-  @keyframes spinner {
-    to {transform: rotate(360deg);}
+  .loading-indicator-slot-container {
+    width: 20px;
   }
-  
-  .spinner {
-    box-sizing: border-box;
+
+  .success-indicator-slot-container {
     width: 20px;
     height: 20px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    border-top-color: #000;
-    animation: spinner .6s linear infinite;
   }
 `;
 
@@ -47,15 +44,19 @@ export class LoadingButton extends LitElement {
   constructor() {
     super();
     this._isLoading = false;
+    this._succeeded = false;
     this.actionText = 'Load';
     this.progressText = 'Loading';
+    this.completedText = 'Loaded';
   }
   
   static get properties() {
     return {
       _isLoading: {state: true},
+      _succeeded: {state: true},
       actionText: {type: String, attribute: true},
       progressText: {type: String, attribute: true},
+      completedText: {type: String, attribute: true}
     };
   }
   
@@ -84,6 +85,7 @@ export class LoadingButton extends LitElement {
 
     this.doAction()
       .then(() => {
+        this.enterSuccessState();
         this.exitLoadingState();
       })
       .catch((error) => {
@@ -100,10 +102,16 @@ export class LoadingButton extends LitElement {
     this._isLoading = false;
   }
 
+  enterSuccessState() {
+    this._succeeded = true;
+  }
+
   showLoadingState() {
     return html`
       <button disabled>
-        <span class="spinner"></span>
+        <div class="loading-indicator-slot-container">
+          <slot name="loading-indicator"></slot>
+        </div>
         <span class="progress-text">${this.progressText}...</span>
       </button>
     `;
@@ -114,15 +122,28 @@ export class LoadingButton extends LitElement {
       <button>
         <span class="action-text">${this.actionText}</span>
       </button>
-      `;
-    }
+    `;
+  }
+
+  showSuccessState() {
+    return html`
+      <button>
+        <div class="success-indicator-slot-container">
+          <slot name="success-indicator"></slot>
+        </div>
+        <span class="completed-text">${this.completedText}!</span>
+      </button>
+    `;
+  }
 
   render() {
     return html`
       ${
         this._isLoading 
           ? this.showLoadingState() 
-          : this.showIdleState()
+          : this._succeeded
+            ? this.showSuccessState()
+            : this.showIdleState()
       }
     `;
   }

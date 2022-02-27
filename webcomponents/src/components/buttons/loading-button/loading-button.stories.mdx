@@ -1,5 +1,7 @@
 import { html } from 'lit-html';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import 'Components/animations/basic-spinner';
+import 'Components/animations/checkmark';
 import './loading-button';
 
 <Meta
@@ -9,6 +11,7 @@ import './loading-button';
     actionText: 'Load',
     progressText: 'Loading',
     loadTime: 2,
+    spinnerType: 'basic',
   }}
   argTypes={{
     actionText: { 
@@ -22,6 +25,13 @@ import './loading-button';
     loadTime: {
       name: 'Load Time (seconds)',
       control: { type: 'number', min: 0, max: 10, step: 1 },
+    },
+    spinnerType: {
+      name: 'Spinner Type',
+      control: { type: 'select'},
+      options: [
+        'basic',
+      ],
     },
     _isLoading: { table: { disable: true } },
     doAction: { table: { disable: true } },
@@ -37,12 +47,27 @@ export const Template = (args) => {
       }, loadTimeMs);
     });
   }
+  const renderCheckmark = () => {
+    return html`<kobo-checkmark slot="success-indicator"></kobo-checkmark>`;
+  }
+  const renderSpinner = () => {
+    switch(args.spinnerType) {
+      case 'basic':
+      default:
+        return html`<basic-spinner slot="loading-indicator"></basic-spinner>`;
+    }
+  }
   return html`
-    <loading-button 
-      actionText=${args.actionText}
-      progressText=${args.progressText}
-      .doAction=${action} 
-    />
+    <div style="width: 200px;">
+      <loading-button 
+        actionText=${args.actionText}
+        progressText=${args.progressText}
+        .doAction=${action} 
+      >
+        ${renderSpinner()}
+        ${renderCheckmark()}
+      </loading-button>
+    </div>
   `;
 }
 

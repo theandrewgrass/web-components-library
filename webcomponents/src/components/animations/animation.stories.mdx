@@ -1,0 +1,75 @@
+import { html } from 'lit-html';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import 'Components/animations/animation';
+import 'Components/animations/checkmark';
+import 'Components/animations/basic-spinner';
+
+<Meta
+  title='Animations'
+  component='kobo-animation'
+  args = {{
+    containerSize: 50,
+  }}
+  argTypes={{
+    containerSize: {
+      name: 'Container Size (px)',
+      control: {
+        type: 'number',
+        min: 0,
+        max: 100,
+        step: 10,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => {
+  return html`
+    <kobo-animation 
+      .animationWidth=${args.containerSize} 
+      .animationHeight=${args.containerSize}
+    >
+      ${args.animation}
+    </kobo-animation>
+  `;
+}
+
+# Basic Spinner
+
+A basic spinner to be used to represent an action currently in progress. Grows to the width of the element within which it's contained.
+
+<Canvas>
+  <Story 
+    name='BasicSpinner'
+    args={{
+      animation: html`<basic-spinner slot="animation"></basic-spinner>`,
+    }}
+    argTypes={{
+      animation: {
+        table: { disable: true },
+      }
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+# Checkmark
+
+Simple checkmark animation. Will grow to the width and height set by it's containing element.
+
+<Canvas>
+  <Story
+    name='Checkmark'
+    args={{
+      animation: html`<kobo-checkmark slot="animation"></kobo-checkmark>`,
+    }}
+    argTypes={{
+      animation: {
+        table: { disable: true },
+      },
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
