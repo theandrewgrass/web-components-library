@@ -31,13 +31,9 @@ function App() {
         completedText="Saved"        
       >
         
-        <kobo-animation slot="loading-indicator">
-          <basic-spinner slot="animation"></basic-spinner>
-        </kobo-animation>
+        <basic-spinner slot="loading-indicator"></basic-spinner>
         
-        <kobo-animation slot="success-indicator">
-          <kobo-checkmark slot="animation"></kobo-checkmark>
-        </kobo-animation>
+        <kobo-checkmark slot="success-indicator"></kobo-checkmark>
 
       </loading-button>
     </div>

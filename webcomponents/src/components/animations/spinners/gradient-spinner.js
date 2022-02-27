@@ -1,5 +1,5 @@
-import { html, css } from 'lit';
-import { BasicSpinner } from "./basic-spinner";
+import { css } from 'lit';
+import { BasicSpinner } from "./basic-spinner.js";
 
 export const styles = css`
   .spinner {

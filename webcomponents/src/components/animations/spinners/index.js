@@ -1,5 +1,5 @@
-import { BasicSpinner } from "./basic-spinner";
-import { GradientSpinner } from "./gradient-spinner";
+import { BasicSpinner } from "./basic-spinner.js";
+import { GradientSpinner } from "./gradient-spinner.js";
 
 export {
   BasicSpinner,

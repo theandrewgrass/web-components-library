@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import '../animations/animation';
+import '../animations/animation.js';
 
 export const styles = css`
   button {
