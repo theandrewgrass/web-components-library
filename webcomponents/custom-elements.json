@@ -14,6 +14,30 @@
             "name": "LoadingButton",
             "module": "src/index.js"
           }
+        },
+        {
+          "kind": "js",
+          "name": "Animation",
+          "declaration": {
+            "name": "Animation",
+            "module": "src/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BasicSpinner",
+          "declaration": {
+            "name": "BasicSpinner",
+            "module": "src/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Checkmark",
+          "declaration": {
+            "name": "Checkmark",
+            "module": "src/index.js"
+          }
         }
       ]
     },

@@ -1,8 +1,10 @@
 {
   "name": "webcomponents",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
-  "main": "dist/shared-components.js",
+  "main": "src/index.js",
+  "type": "module",
+  "module": "src/index.js",
   "scripts": {
     "test": "jest",
     "storybook": "start-storybook -p 6006",

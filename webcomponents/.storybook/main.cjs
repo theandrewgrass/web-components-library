@@ -17,6 +17,17 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.alias['Components'] = path.resolve(__dirname, '../src/components');
     config.resolve.alias['Styles'] = path.resolve(__dirname, '../src/styles');
+    
+    // resolves complaints from storybook about modules
+    config.module.rules.push(
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+    );
+    
     return config;
   }
 }
