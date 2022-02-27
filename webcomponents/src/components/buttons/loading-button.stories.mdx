@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-import 'Components/animations/basic-spinner';
+import 'Components/animations/spinners';
 import 'Components/animations/checkmark';
 import './loading-button';
 
@@ -10,6 +10,7 @@ import './loading-button';
   args={{
     actionText: 'Load',
     progressText: 'Loading',
+    completedText: 'Loaded',
     loadTime: 2,
     spinnerType: 'basic',
   }}
@@ -22,6 +23,10 @@ import './loading-button';
       name: 'Progress Text',
       control: { type: 'text' } 
     },
+    completedText: {
+      name: 'Completed Text',
+      control: { type: 'text' }
+    },
     loadTime: {
       name: 'Load Time (seconds)',
       control: { type: 'number', min: 0, max: 10, step: 1 },
@@ -31,6 +36,7 @@ import './loading-button';
       control: { type: 'select'},
       options: [
         'basic',
+        'gradient',
       ],
     },
     _isLoading: { table: { disable: true } },
@@ -52,6 +58,8 @@ export const Template = (args) => {
   }
   const renderSpinner = () => {
     switch(args.spinnerType) {
+      case 'gradient':
+        return html`<gradient-spinner slot="loading-indicator"></gradient-spinner>`;
       case 'basic':
       default:
         return html`<basic-spinner slot="loading-indicator"></basic-spinner>`;
@@ -62,6 +70,7 @@ export const Template = (args) => {
       <loading-button 
         actionText=${args.actionText}
         progressText=${args.progressText}
+        completedText=${args.completedText}
         .doAction=${action} 
       >
         ${renderSpinner()}

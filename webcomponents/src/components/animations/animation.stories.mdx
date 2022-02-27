@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import 'Components/animations/animation';
 import 'Components/animations/checkmark';
-import 'Components/animations/basic-spinner';
+import { BasicSpinner, GradientSpinner } from 'Components/animations/spinners';
 
 <Meta
   title='Animations'
@@ -43,6 +43,22 @@ A basic spinner to be used to represent an action currently in progress. Grows t
     name='BasicSpinner'
     args={{
       animation: html`<basic-spinner slot="animation"></basic-spinner>`,
+    }}
+    argTypes={{
+      animation: {
+        table: { disable: true },
+      }
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story 
+    name='GradientSpinner'
+    args={{
+      animation: html`<gradient-spinner slot="animation"></gradient-spinner>`,
     }}
     argTypes={{
       animation: {

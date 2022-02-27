@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import '../animations/animation';
 
 export const styles = css`
   button {
@@ -20,15 +21,6 @@ export const styles = css`
   button:disabled {
     cursor: not-allowed;
   }
-
-  .loading-indicator-slot-container {
-    width: 20px;
-  }
-
-  .success-indicator-slot-container {
-    width: 20px;
-    height: 20px;
-  }
 `;
 
 /**
@@ -38,6 +30,7 @@ export const styles = css`
  * @property {Function} [doAction] The action to be performed when the button is clicked. Must return a Promise.
  * @property {String} [actionText] The text to be displayed on the button in its idle state. Should depict the action to be performed on click.
  * @property {String} [progressText] The text to be displayed on the button in its loading state. Should depict the action in an active state (i.e. Save -> Saving).
+ * @property {String} [completedText] The text to be displayed on the button in its completed state. Should depict the action in a completed state (i.e. Save -> Saved).
  */
 export class LoadingButton extends LitElement {
   constructor() {
@@ -108,9 +101,9 @@ export class LoadingButton extends LitElement {
   showLoadingState() {
     return html`
       <button disabled>
-        <div class="loading-indicator-slot-container">
-          <slot name="loading-indicator"></slot>
-        </div>
+        <kobo-animation animationHeight="20" animationWidth="20">
+          <slot slot="animation" name="loading-indicator"></slot>
+        </kobo-animation>
         <span class="progress-text">${this.progressText}...</span>
       </button>
     `;
@@ -127,9 +120,9 @@ export class LoadingButton extends LitElement {
   showSuccessState() {
     return html`
       <button>
-        <div class="success-indicator-slot-container">
-          <slot name="success-indicator"></slot>
-        </div>
+        <kobo-animation animationHeight="20" animationWidth="20">
+          <slot slot="animation" name="success-indicator"></slot>
+        </kobo-animation>
         <span class="completed-text">${this.completedText}!</span>
       </button>
     `;
