@@ -9,9 +9,8 @@ export const styles = css`
   .checkmark {
     height: 100%;
     width: 100%;
-    stroke-width: 10;
+    stroke-width: 16;
     stroke: #000;
-    stroke-miterlimit: 10;
     stroke-linecap: round;
     stroke-linejoin: round;
   }

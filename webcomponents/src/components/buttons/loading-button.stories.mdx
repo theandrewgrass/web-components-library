@@ -12,7 +12,7 @@ import './loading-button';
     progressText: 'Loading',
     completedText: 'Loaded',
     loadTime: 2,
-    spinnerType: 'basic',
+    spinnerType: 'solid',
   }}
   argTypes={{
     actionText: { 
@@ -35,8 +35,9 @@ import './loading-button';
       name: 'Spinner Type',
       control: { type: 'select'},
       options: [
-        'basic',
+        'solid',
         'gradient',
+        'outline'
       ],
     },
     _isLoading: { table: { disable: true } },
@@ -57,13 +58,7 @@ export const Template = (args) => {
     return html`<kobo-checkmark slot="success-indicator"></kobo-checkmark>`;
   }
   const renderSpinner = () => {
-    switch(args.spinnerType) {
-      case 'gradient':
-        return html`<gradient-spinner slot="loading-indicator"></gradient-spinner>`;
-      case 'basic':
-      default:
-        return html`<basic-spinner slot="loading-indicator"></basic-spinner>`;
-    }
+    return html`<basic-spinner slot="loading-indicator" .spinnerType=${args.spinnerType}></basic-spinner>`;
   }
   return html`
     <div style="width: 200px;">

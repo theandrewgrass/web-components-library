@@ -34,6 +34,17 @@ export const Template = (args) => {
   `;
 }
 
+export const SpinnerTemplate = (args) => {
+  return html`
+    <kobo-animation 
+      .animationWidth=${args.containerSize} 
+      .animationHeight=${args.containerSize}
+    >
+      <basic-spinner slot="animation" .spinnerType=${args.spinnerType}></basic-spinner>
+    </kobo-animation>
+  `;
+}
+
 # Basic Spinner
 
 A basic spinner to be used to represent an action currently in progress. Grows to the width of the element within which it's contained.
@@ -42,31 +53,19 @@ A basic spinner to be used to represent an action currently in progress. Grows t
   <Story 
     name='BasicSpinner'
     args={{
-      animation: html`<basic-spinner slot="animation"></basic-spinner>`,
+      spinnerType: 'solid',
     }}
     argTypes={{
-      animation: {
-        table: { disable: true },
-      }
+      spinnerType: {
+        name: 'Spinner Type',
+        control: {
+          type: 'select',
+          options: ['solid', 'gradient', 'outline'],
+        },
+      },
     }}
   >
-    { Template.bind({}) }
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story 
-    name='GradientSpinner'
-    args={{
-      animation: html`<gradient-spinner slot="animation"></gradient-spinner>`,
-    }}
-    argTypes={{
-      animation: {
-        table: { disable: true },
-      }
-    }}
-  >
-    { Template.bind({}) }
+    { SpinnerTemplate.bind({}) }
   </Story>
 </Canvas>
 
