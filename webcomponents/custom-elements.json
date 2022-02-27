@@ -4,129 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "dist/kobo-components.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "LoadingButton",
-          "members": [
-            {
-              "kind": "field",
-              "name": "doAction",
-              "type": {
-                "text": "Function"
-              },
-              "description": "The action to be performed when the button is clicked. Must return a Promise."
-            },
-            {
-              "kind": "method",
-              "name": "handleEvent",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleClick",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "enterLoadingState"
-            },
-            {
-              "kind": "method",
-              "name": "exitLoadingState"
-            },
-            {
-              "kind": "method",
-              "name": "showLoadingState"
-            },
-            {
-              "kind": "method",
-              "name": "showIdleState"
-            },
-            {
-              "kind": "field",
-              "name": "_isLoading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "privacy": "public",
-              "attribute": "_isLoading"
-            },
-            {
-              "kind": "field",
-              "name": "actionText",
-              "type": {
-                "text": "String"
-              },
-              "default": "'Load'",
-              "description": "The text to be displayed on the button in its idle state. Should depict the action to be performed on click.",
-              "privacy": "public",
-              "attribute": "actionText"
-            },
-            {
-              "kind": "field",
-              "name": "progressText",
-              "type": {
-                "text": "String"
-              },
-              "default": "'Loading'",
-              "description": "The text to be displayed on the button in its loading state. Should depict the action in an active state (i.e. Save -> Saving).",
-              "privacy": "public",
-              "attribute": "progressText"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "_isLoading",
-              "fieldName": "_isLoading"
-            },
-            {
-              "name": "actionText",
-              "fieldName": "actionText"
-            },
-            {
-              "name": "progressText",
-              "fieldName": "progressText"
-            }
-          ],
-          "superclass": {
-            "name": "lit_element_s",
-            "module": "dist/kobo-components.js"
-          },
-          "tagName": "loading-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "name": "loading-button",
-          "declaration": {
-            "name": "LoadingButton",
-            "module": "dist/kobo-components.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shared-components.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/index.js",
       "declarations": [],
       "exports": [
@@ -329,7 +206,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/buttons/loading-button/loading-button.js",
+      "path": "src/components/buttons/loading-button.js",
       "declarations": [
         {
           "kind": "variable",
@@ -480,7 +357,7 @@
           "name": "styles",
           "declaration": {
             "name": "styles",
-            "module": "src/components/buttons/loading-button/loading-button.js"
+            "module": "src/components/buttons/loading-button.js"
           }
         },
         {
@@ -488,7 +365,7 @@
           "name": "LoadingButton",
           "declaration": {
             "name": "LoadingButton",
-            "module": "src/components/buttons/loading-button/loading-button.js"
+            "module": "src/components/buttons/loading-button.js"
           }
         },
         {
@@ -496,7 +373,7 @@
           "name": "loading-button",
           "declaration": {
             "name": "LoadingButton",
-            "module": "src/components/buttons/loading-button/loading-button.js"
+            "module": "src/components/buttons/loading-button.js"
           }
         }
       ]

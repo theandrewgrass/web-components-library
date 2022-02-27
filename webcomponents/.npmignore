@@ -5,3 +5,11 @@ babel.config.cjs
 
 **/*.test.js
 jest.config.cjs
+
+webpack.config.cjs
+
+index.html
+
+dist/**
+
+src/styles/**
