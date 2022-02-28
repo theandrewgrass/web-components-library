@@ -22,7 +22,7 @@ function App() {
       <h1>Web Components Demo</h1>
       <h2>Currently inside a React Application</h2>
       <p>Press the button below to try it out!</p>
-      <p style={{fontSize: "32px"}}>👇</p>
+      <p style={{fontSize: "48px"}}>👇</p>
 
       <loading-button
         ref={loadingButtonRef}
