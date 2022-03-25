@@ -1,0 +1,35 @@
+import { html } from 'lit-html';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import './base-button';
+
+<Meta
+  title='Buttons/BaseButton'
+  component='base-button'
+  args={{
+    text: 'Click Me!',
+  }}
+  argTypes={{
+    text: { 
+      name: 'Text',
+      control: { type: 'text' } 
+    },
+  }}
+/>
+
+export const Template = (args) => {
+  return html`
+    <base-button text=${args.text}></base-button>
+  `;
+}
+
+# Base Button
+
+The basis upon which all kobo buttons are built.
+
+<Canvas>
+  <Story name='BaseButton'>
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<ArgsTable of='base-button' />

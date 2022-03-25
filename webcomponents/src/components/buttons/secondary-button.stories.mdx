@@ -1,0 +1,35 @@
+import { html } from 'lit-html';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import './secondary-button';
+
+<Meta
+  title='Buttons/SecondaryButton'
+  component='secondary-button'
+  args={{
+    text: 'Click Me!',
+  }}
+  argTypes={{
+    text: { 
+      name: 'Text',
+      control: { type: 'text' } 
+    },
+  }}
+/>
+
+export const Template = (args) => {
+  return html`
+    <secondary-button text=${args.text}></secondary-button>
+  `;
+}
+
+# Base Button
+
+The basis upon which all kobo buttons are built.
+
+<Canvas>
+  <Story name='SecondaryButton'>
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<ArgsTable of='secondary-button' />
