@@ -1,12 +1,12 @@
 import { css } from 'lit-element';
-import { BaseButton } from './base-button';
+import { BaseButton } from '../base-button';
 
 export const styles = css`
   :host {
     --button-border-color: rgba(0,0,0,0.42);
-
     --button-hover-background-color: #EAEAEA;
-    --button-ripple-color: #000000;
+    
+    --ripple-color: #000000;
   }
 `;
 

@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import { RippleController } from '../../controllers/ripple-controller';
 
 export const styles = css`
   :host {
@@ -24,10 +25,6 @@ export const styles = css`
 
     /* hover */
     --button-hover-background-color: #CCCCCC;
-
-    /* ripple */
-    --button-ripple-color: #FFFFFF;
-    --button-ripple-opacity: 0.8;
   }
 
   button {
@@ -93,24 +90,6 @@ export const styles = css`
     outline-color: black;
     border-color: white;
   }
-
-  /* ripple effect */
-  span.ripple {
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple 600ms linear;
-    background-color: var(--button-ripple-color);
-    opacity: var(--button-ripple-opacity);
-    cursor: default;
-  }
-
-  @keyframes ripple {
-    to {
-      transform: scale(3);
-      opacity: 0;
-    }
-  }
 `;
 
 export class BaseButton extends LitElement {
@@ -129,20 +108,20 @@ export class BaseButton extends LitElement {
   }
   
   static get styles() { return [styles]; }
-
+  
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('click', this);
     this.addEventListener('focus', this);
     this.addEventListener('mousedown', this);
     this.addEventListener('mouseup', this);
   }
+  
+  firstUpdated() {
+    new RippleController(this, this.shadowRoot.querySelector('button'));
+  }
 
   handleEvent(event) {
     switch (event.type) {
-      case 'click':
-        this.handleClick(event);
-        break;
       case 'focus':
         this.handleFocus(event);
         break;
@@ -155,38 +134,9 @@ export class BaseButton extends LitElement {
     }
   }
       
-  handleClick(event) {
-    this.createRipple(event);
-  }
-
   handleFocus(event) {
     if (this.mouseDown)
       event.target.blur();
-  }
-
-  createRipple(event) {
-    // get the button element inside the shadow dom of the current element in event
-    const button = this.shadowRoot.querySelector('button');
-    const circle = document.createElement("span");
-    const diameter = Math.max(button.offsetWidth, button.offsetHeight);
-    const radius = diameter / 2;
-
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - (button.offsetLeft + radius)}px`;
-    circle.style.top = `${event.clientY - (button.offsetTop + radius)}px`;
-    circle.classList.add("ripple"); 
-
-    const ripple = button.getElementsByClassName("ripple")[0];
-
-    if (ripple) {
-      ripple.remove();
-    }
-
-    button.appendChild(circle);
-
-    button.onanimationend = () => {
-      button.removeChild(circle);
-    } 
   }
 
   render() {
