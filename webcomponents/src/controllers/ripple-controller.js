@@ -1,4 +1,4 @@
-import { RippleAnimation } from "../components/animations/ripple-animation";
+import { RippleAnimation } from "../components/animations/ripple-animation.js";
 
 /**
  * @class RippleController
@@ -22,8 +22,10 @@ export class RippleController {
     const radius = diameter / 2;
 
     ripple.style.width = ripple.style.height = `${diameter}px`;
-    ripple.style.left = `${event.clientX - (this.targetElement.offsetLeft + radius)}px`;
-    ripple.style.top = `${event.clientY - (this.targetElement.offsetTop + radius)}px`;
+
+    let targetElementBounds = this.targetElement.getBoundingClientRect();
+    ripple.style.left = `${event.clientX - targetElementBounds.left - radius}px`;
+    ripple.style.top = `${event.clientY - targetElementBounds.top - radius}px`;
     
     const appendedRipple = this.targetElement.appendChild(ripple);
     appendedRipple.addEventListener('animationend', this);
@@ -39,9 +41,9 @@ export class RippleController {
   
   handleEvent(event) {
     switch (event.type) {
-      case 'click':
-        this.handleClick(event);
-        break;
+      // case 'click':
+      //   this.handleClick(event);
+      //   break;
       case 'animationend':
         this.handleAnimationEnd(event);
         break;
@@ -53,6 +55,11 @@ export class RippleController {
   }
 
   handleAnimationEnd(event) {
+    const redispatchedEvent = new CustomEvent('animationend', {
+      bubbles: true,
+      detail: event.detail,
+    });
+    this.host.dispatchEvent(redispatchedEvent);
     this.cleanupRipple(event.target);
   }
     

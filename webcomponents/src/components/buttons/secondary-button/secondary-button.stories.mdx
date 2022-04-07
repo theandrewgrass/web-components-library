@@ -7,10 +7,15 @@ import './secondary-button';
   component='secondary-button'
   args={{
     text: 'Click Me!',
+    containerWidth: '200px',
   }}
   argTypes={{
     text: { 
       name: 'Text',
+      control: { type: 'text' } 
+    },
+    containerWidth: { 
+      name: 'Container Width',
       control: { type: 'text' } 
     },
   }}
@@ -18,7 +23,9 @@ import './secondary-button';
 
 export const Template = (args) => {
   return html`
-    <secondary-button text=${args.text}></secondary-button>
+    <div style="width: ${args.containerWidth}">
+      <secondary-button text="${args.text}"></secondary-button>
+    </div>
   `;
 }
 

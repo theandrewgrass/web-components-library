@@ -44,6 +44,116 @@
             "name": "Checkmark",
             "module": "src/index.js"
           }
+        },
+        {
+          "kind": "js",
+          "name": "PrimaryButton",
+          "declaration": {
+            "name": "PrimaryButton",
+            "module": "src/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SecondaryButton",
+          "declaration": {
+            "name": "SecondaryButton",
+            "module": "src/index.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/controllers/ripple-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RippleController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rippleElements",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "method",
+              "name": "createRipple",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cleanupRipple",
+              "parameters": [
+                {
+                  "name": "ripple"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleAnimationEnd",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "targetElement",
+              "default": "targetElement"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RippleController",
+          "declaration": {
+            "name": "RippleController",
+            "module": "src/controllers/ripple-controller.js"
+          }
         }
       ]
     },
@@ -126,7 +236,7 @@
         {
           "kind": "variable",
           "name": "styles",
-          "default": "css`\r\n  :host {\r\n    --check-width: calc(var(--check-height) / 2);\r\n    --check-height: 100%;\r\n  }\r\n\r\n  .checkmark {\r\n    height: 100%;\r\n    width: 100%;\r\n    stroke-width: 10;\r\n    stroke: #000;\r\n    stroke-miterlimit: 10;\r\n    stroke-linecap: round;\r\n    stroke-linejoin: round;\r\n  }\r\n\r\n  .checkmark__check {\r\n    animation: stroke 0.3s ease-in forwards;\r\n\r\n    height: 100%;\r\n    width: 100%;\r\n    transform-origin: 50% 50%;\r\n    stroke-dasharray: 150;\r\n    stroke-dashoffset: 150;\r\n  }\r\n\r\n  @keyframes stroke {\r\n    100% {\r\n      stroke-dashoffset: 0\r\n    }\r\n  }\r\n`"
+          "default": "css`\r\n  :host {\r\n    --check-width: calc(var(--check-height) / 2);\r\n    --check-height: 100%;\r\n  }\r\n\r\n  .checkmark {\r\n    height: 100%;\r\n    width: 100%;\r\n    stroke-width: 16;\r\n    stroke: #000;\r\n    stroke-linecap: round;\r\n    stroke-linejoin: round;\r\n  }\r\n\r\n  .checkmark__check {\r\n    animation: stroke 0.3s ease-in forwards;\r\n\r\n    height: 100%;\r\n    width: 100%;\r\n    transform-origin: 50% 50%;\r\n    stroke-dasharray: 150;\r\n    stroke-dashoffset: 150;\r\n  }\r\n\r\n  @keyframes stroke {\r\n    100% {\r\n      stroke-dashoffset: 0\r\n    }\r\n  }\r\n`"
         },
         {
           "kind": "class",
@@ -181,6 +291,202 @@
           "declaration": {
             "name": "Checkmark",
             "module": "src/components/animations/checkmark.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/animations/ripple-animation.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "default": "css`\r\n  :host {\r\n    --default-ripple-color: #FFFFFF;\r\n    --default-ripple-opacity: 0.8;\r\n\r\n    position: absolute;\r\n  }\r\n\r\n  .ripple {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    border-radius: 50%;\r\n    transform: scale(0);\r\n    animation: ripple 600ms linear;\r\n    background-color: var(--ripple-color, var(--default-ripple-color));\r\n    opacity: var(--ripple-opacity, var(--default-ripple-opacity));\r\n  }\r\n\r\n  @keyframes ripple {\r\n    to {\r\n      transform: scale(3);\r\n      opacity: 0;\r\n    }\r\n  }\r\n`"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RippleAnimation",
+          "members": [
+            {
+              "kind": "field",
+              "name": "ripple"
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleAnimationEnd"
+            }
+          ],
+          "events": [
+            {
+              "name": "animationend",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ripple-animation",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "styles",
+          "declaration": {
+            "name": "styles",
+            "module": "src/components/animations/ripple-animation.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RippleAnimation",
+          "declaration": {
+            "name": "RippleAnimation",
+            "module": "src/components/animations/ripple-animation.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ripple-animation",
+          "declaration": {
+            "name": "RippleAnimation",
+            "module": "src/components/animations/ripple-animation.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/buttons/base-button.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "default": "css`\r\n  :host {\r\n    display: inline-block;\r\n    width: 100%;\r\n    \r\n    --button-font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande';\r\n    --button-font-weight: 700;\r\n    --button-line-height: 18.58px;\r\n    --button-height: 48px;\r\n    --button-background-color: #FFFFFF;\r\n    --button-text-color: #000000;\r\n    --button-border-width: 1px;\r\n    --button-border-color: #000000;\r\n    --button-border-radius: 0;\r\n    --button-padding-vertical: 0;\r\n    --button-padding-horizontal: 16px;\r\n    --button-width: 100%;\r\n    --button-min-width: 100px;\r\n    --button-cursor: pointer;\r\n    --button-font-size: 16px;\r\n    --button-inner-gap: 10px;\r\n    --button-disabled-cursor: not-allowed;\r\n    --button-margin-vertical: 0;\r\n    --button-margin-horizontal: 0;\r\n\r\n    /* hover */\r\n    --button-hover-background-color: #CCCCCC;\r\n  }\r\n\r\n  button {\r\n    /* placement */\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: var(--button-inner-gap);\r\n    \r\n    /* font */\r\n    font-family: var(--button-font);\r\n    font-size: var(--button-font-size);\r\n    font-weight: var(--button-font-weight);\r\n    line-height: var(--button-line-height);\r\n\r\n    /* colour */\r\n    background-color: var(--button-background-color);\r\n    color: var(--button-text-color);\r\n\r\n    /* sizing */\r\n    min-width: var(--button-min-width);\r\n    width: var(--button-width);\r\n    height: var(--button-height);\r\n\r\n    /* margin and padding */\r\n    padding: var(--button-padding-vertical) var(--button-padding-horizontal);\r\n    margin: var(--button-margin-vertical) var(--button-margin-horizontal);\r\n\r\n    /* border and outline */\r\n    border: none; /* remove default border */\r\n    outline: none; /* remove default outline */\r\n    border-style: solid;\r\n    border-width: var(--button-border-width);\r\n    border-color: var(--button-border-color);\r\n    border-radius: var(--button-border-radius);\r\n    \r\n    /* misc */\r\n    cursor: var(--button-cursor);\r\n\r\n    position: relative;\r\n    overflow: hidden;\r\n    width: 100%;\r\n  }\r\n\r\n  button:disabled {\r\n    cursor: var(--button-disabled-cursor);\r\n  }\r\n\r\n  button:hover {\r\n    background-color: var(--button-hover-background-color);\r\n  }\r\n\r\n  button:focus {\r\n    background-color: var(--button-hover-background-color);\r\n  }\r\n\r\n  .button-container {\r\n    display: inline-block;\r\n    width: 100%;\r\n    outline: 2px solid transparent;\r\n    border: 2px solid transparent;\r\n  }\r\n\r\n  .button-container:focus-within {\r\n    outline-color: black;\r\n    border-color: white;\r\n  }\r\n`"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "BaseButton",
+          "members": [
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleAnimationEnd",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Click Me!\"",
+              "privacy": "public",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "mouseDown",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "fieldName": "text"
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "base-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "styles",
+          "declaration": {
+            "name": "styles",
+            "module": "src/components/buttons/base-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BaseButton",
+          "declaration": {
+            "name": "BaseButton",
+            "module": "src/components/buttons/base-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "base-button",
+          "declaration": {
+            "name": "BaseButton",
+            "module": "src/components/buttons/base-button.js"
           }
         }
       ]
@@ -362,18 +668,49 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/buttons/submit-button.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/animations/spinners/basic-spinner.js",
       "declarations": [
         {
           "kind": "variable",
           "name": "styles",
-          "default": "css`\r\n  :host {\r\n    --spinner-width: 2px;\r\n  }\r\n\r\n  @keyframes spinner {\r\n    to {transform: rotate(360deg);}\r\n  }\r\n  \r\n  .spinner {\r\n    padding-top: calc(100% - 2*var(--spinner-width));\r\n    box-sizing: border-box;\r\n    border-radius: 50%;\r\n    border: var(--spinner-width) solid #ccc;\r\n    border-top-color: #000;\r\n    animation: spinner .6s linear infinite;\r\n  }\r\n`"
+          "default": "css`\r\n  :host {\r\n    --spinner-width: 4px;\r\n  }\r\n\r\n  @keyframes spinner {\r\n    to {transform: rotate(360deg);}\r\n  }\r\n  \r\n  .spinner {\r\n    padding-top: calc(100% - 2*var(--spinner-width));\r\n    box-sizing: border-box;\r\n    border-radius: 50%;\r\n    border-width: var(--spinner-width);\r\n    border-color: #ccc;\r\n    border-top-color: #000;\r\n    animation: spinner .6s linear infinite;\r\n  }\r\n\r\n  .spinner.solid {\r\n    border-style: solid;\r\n  }\r\n\r\n  .spinner.gradient {\r\n    border-style: outset;\r\n  }\r\n\r\n  .spinner.outline {\r\n    border-style: double;\r\n  }\r\n`"
         },
         {
           "kind": "class",
           "description": "",
           "name": "BasicSpinner",
-          "members": [],
+          "members": [
+            {
+              "kind": "field",
+              "name": "spinnerTypeMap",
+              "type": {
+                "text": "object"
+              },
+              "default": "{\r\n    solid: 'solid',\r\n    gradient: 'gradient',\r\n    outline: 'outline',\r\n  }"
+            },
+            {
+              "kind": "field",
+              "name": "spinnerType",
+              "type": {
+                "text": "string"
+              },
+              "default": "'solid'",
+              "privacy": "public",
+              "attribute": "spinnerType"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "spinnerType",
+              "fieldName": "spinnerType"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
@@ -411,55 +748,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/animations/spinners/gradient-spinner.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "styles",
-          "default": "css`\r\n  .spinner {\r\n    border-style: outset;\r\n  }\r\n`"
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "GradientSpinner",
-          "members": [],
-          "superclass": {
-            "name": "BasicSpinner",
-            "module": "/src/components/animations/spinners/basic-spinner"
-          },
-          "tagName": "gradient-spinner",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "styles",
-          "declaration": {
-            "name": "styles",
-            "module": "src/components/animations/spinners/gradient-spinner.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "GradientSpinner",
-          "declaration": {
-            "name": "GradientSpinner",
-            "module": "src/components/animations/spinners/gradient-spinner.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "gradient-spinner",
-          "declaration": {
-            "name": "GradientSpinner",
-            "module": "src/components/animations/spinners/gradient-spinner.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/animations/spinners/index.js",
       "declarations": [],
       "exports": [
@@ -470,13 +758,463 @@
             "name": "BasicSpinner",
             "module": "src/components/animations/spinners/index.js"
           }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/buttons/primary-button/loading-primary-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LoadingPrimaryButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Click Me!\"",
+              "privacy": "public",
+              "attribute": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleAnimationEnd",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mouseDown",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "fieldName": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "PrimaryButton",
+            "module": "/src/components/buttons/primary-button/primary-button"
+          },
+          "tagName": "loading-primary-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LoadingPrimaryButton",
+          "declaration": {
+            "name": "LoadingPrimaryButton",
+            "module": "src/components/buttons/primary-button/loading-primary-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "loading-primary-button",
+          "declaration": {
+            "name": "LoadingPrimaryButton",
+            "module": "src/components/buttons/primary-button/loading-primary-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/buttons/primary-button/primary-button.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "default": "css`\r\n  :host {\r\n    --button-background-color: #BF0000;\r\n    --button-text-color: #FFFFFF;\r\n    --button-border-color: #BF0000;\r\n\r\n    --button-hover-background-color: #C41414;\r\n  }\r\n`"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PrimaryButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Click Me!\"",
+              "privacy": "public",
+              "attribute": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleAnimationEnd",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mouseDown",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "fieldName": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseButton",
+            "module": "/src/components/buttons/base-button.js"
+          },
+          "tagName": "primary-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "styles",
+          "declaration": {
+            "name": "styles",
+            "module": "src/components/buttons/primary-button/primary-button.js"
+          }
         },
         {
           "kind": "js",
-          "name": "GradientSpinner",
+          "name": "PrimaryButton",
           "declaration": {
-            "name": "GradientSpinner",
-            "module": "src/components/animations/spinners/index.js"
+            "name": "PrimaryButton",
+            "module": "src/components/buttons/primary-button/primary-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "primary-button",
+          "declaration": {
+            "name": "PrimaryButton",
+            "module": "src/components/buttons/primary-button/primary-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/buttons/secondary-button/secondary-button.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "default": "css`\r\n  :host {\r\n    --button-border-color: rgba(0,0,0,0.42);\r\n    --button-hover-background-color: #EAEAEA;\r\n    \r\n    --ripple-color: #000000;\r\n  }\r\n`"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SecondaryButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Click Me!\"",
+              "privacy": "public",
+              "attribute": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleAnimationEnd",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mouseDown",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "fieldName": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseButton",
+            "module": "/src/components/buttons/base-button.js"
+          },
+          "tagName": "secondary-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "styles",
+          "declaration": {
+            "name": "styles",
+            "module": "src/components/buttons/secondary-button/secondary-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SecondaryButton",
+          "declaration": {
+            "name": "SecondaryButton",
+            "module": "src/components/buttons/secondary-button/secondary-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "secondary-button",
+          "declaration": {
+            "name": "SecondaryButton",
+            "module": "src/components/buttons/secondary-button/secondary-button.js"
           }
         }
       ]

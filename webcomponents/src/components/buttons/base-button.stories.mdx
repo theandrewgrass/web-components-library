@@ -7,10 +7,15 @@ import './base-button';
   component='base-button'
   args={{
     text: 'Click Me!',
+    containerWidth: '200px',
   }}
   argTypes={{
     text: { 
       name: 'Text',
+      control: { type: 'text' } 
+    },
+    containerWidth: { 
+      name: 'Container Width',
       control: { type: 'text' } 
     },
   }}
@@ -18,7 +23,9 @@ import './base-button';
 
 export const Template = (args) => {
   return html`
-    <base-button text=${args.text}></base-button>
+    <div style="width: ${args.containerWidth}">
+      <base-button text=${args.text}></base-button>
+    </div>
   `;
 }
 

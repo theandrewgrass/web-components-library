@@ -1,8 +1,11 @@
 import { LitElement, html, css } from 'lit';
-import { RippleController } from '../../controllers/ripple-controller';
+import { RippleController } from '../../controllers/ripple-controller.js';
 
 export const styles = css`
   :host {
+    display: inline-block;
+    width: 100%;
+    
     --button-font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande';
     --button-font-weight: 700;
     --button-line-height: 18.58px;
@@ -14,7 +17,7 @@ export const styles = css`
     --button-border-radius: 0;
     --button-padding-vertical: 0;
     --button-padding-horizontal: 16px;
-    --button-width: auto;
+    --button-width: 100%;
     --button-min-width: 100px;
     --button-cursor: pointer;
     --button-font-size: 16px;
@@ -66,6 +69,7 @@ export const styles = css`
 
     position: relative;
     overflow: hidden;
+    width: 100%;
   }
 
   button:disabled {
@@ -82,6 +86,7 @@ export const styles = css`
 
   .button-container {
     display: inline-block;
+    width: 100%;
     outline: 2px solid transparent;
     border: 2px solid transparent;
   }
@@ -97,6 +102,7 @@ export class BaseButton extends LitElement {
     super();
     this.text = "Click Me!";
     this.disabled = false;
+    this.rippleController;
   }
   
   static get properties() {
@@ -111,17 +117,22 @@ export class BaseButton extends LitElement {
   
   connectedCallback() {
     super.connectedCallback();
+    this.addEventListener('click', this);
     this.addEventListener('focus', this);
     this.addEventListener('mousedown', this);
     this.addEventListener('mouseup', this);
+    this.addEventListener('animationend', this);
   }
   
   firstUpdated() {
-    new RippleController(this, this.shadowRoot.querySelector('button'));
+    this.rippleController = new RippleController(this, this.shadowRoot.querySelector('button'));
   }
 
   handleEvent(event) {
     switch (event.type) {
+      case 'click':
+        this.handleClick(event);
+        break;
       case 'focus':
         this.handleFocus(event);
         break;
@@ -131,12 +142,33 @@ export class BaseButton extends LitElement {
       case 'mouseup':
         this.mouseDown = false;
         break;
+      case 'animationend':
+        this.handleAnimationEnd(event);
+        break;
     }
   }
-      
+  
+  handleClick(event) {
+    this.rippleController.handleClick(event);
+  }
+
+
   handleFocus(event) {
     if (this.mouseDown)
       event.target.blur();
+  }
+
+  handleAnimationEnd(event) {
+    const readyForActionEvent = new CustomEvent('readyForAction', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        target: this,
+        event: event,
+      },
+    });
+
+    this.dispatchEvent(readyForActionEvent);
   }
 
   render() {

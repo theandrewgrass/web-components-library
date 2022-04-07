@@ -1,5 +1,5 @@
-import { css } from 'lit-element';
-import { BaseButton } from '../base-button';
+import { css } from 'lit';
+import { BaseButton } from '../base-button.js';
 
 export const styles = css`
   :host {

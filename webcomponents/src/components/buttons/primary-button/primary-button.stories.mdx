@@ -7,10 +7,15 @@ import './primary-button';
   component='primary-button'
   args={{
     text: 'Click Me!',
+    containerWidth: '200px',
   }}
   argTypes={{
     text: { 
       name: 'Text',
+      control: { type: 'text' } 
+    },
+    containerWidth: { 
+      name: 'Container Width',
       control: { type: 'text' } 
     },
   }}
@@ -18,7 +23,9 @@ import './primary-button';
 
 export const Template = (args) => {
   return html`
-    <primary-button text=${args.text}></primary-button>
+    <div style="width:${args.containerWidth};">
+      <primary-button text=${args.text}></primary-button>
+    </div>
   `;
 }
 
