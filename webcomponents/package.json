@@ -6,10 +6,8 @@
   "type": "module",
   "module": "lib/index.js",
   "scripts": {
-    "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "sass": "node-sass src/styles/sass/index.scss -o src/styles/css/",
     "generate-manifest": "npx cem analyze --litelement",
     "build-webpack": "webpack",
     "prepare": "webpack"
@@ -33,9 +31,7 @@
     "@storybook/builder-webpack5": "^6.5.0-alpha.42",
     "@storybook/manager-webpack5": "^6.5.0-alpha.42",
     "@storybook/web-components": "^6.5.0-alpha.42",
-    "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.3",
-    "jest": "^27.5.1",
     "lit-css-loader": "^1.2.2",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
