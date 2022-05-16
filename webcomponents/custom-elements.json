@@ -10,6 +10,12 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/index.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/index.js",
       "declarations": [],
       "exports": [
@@ -763,6 +769,163 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/buttons/secondary-button/secondary-button.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "default": "css`\r\n  :host {\r\n    --button-border-color: rgba(0,0,0,0.42);\r\n    --button-hover-background-color: #EAEAEA;\r\n    \r\n    --ripple-color: #000000;\r\n  }\r\n`"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SecondaryButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Click Me!\"",
+              "privacy": "public",
+              "attribute": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleEvent",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleAnimationEnd",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mouseDown",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "fieldName": "text",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "BaseButton",
+                "module": "src/components/buttons/base-button.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseButton",
+            "module": "/src/components/buttons/base-button.js"
+          },
+          "tagName": "secondary-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "styles",
+          "declaration": {
+            "name": "styles",
+            "module": "src/components/buttons/secondary-button/secondary-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SecondaryButton",
+          "declaration": {
+            "name": "SecondaryButton",
+            "module": "src/components/buttons/secondary-button/secondary-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "secondary-button",
+          "declaration": {
+            "name": "SecondaryButton",
+            "module": "src/components/buttons/secondary-button/secondary-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/buttons/primary-button/loading-primary-button.js",
       "declarations": [
         {
@@ -1058,163 +1221,6 @@
           "declaration": {
             "name": "PrimaryButton",
             "module": "src/components/buttons/primary-button/primary-button.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/buttons/secondary-button/secondary-button.js",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "styles",
-          "default": "css`\r\n  :host {\r\n    --button-border-color: rgba(0,0,0,0.42);\r\n    --button-hover-background-color: #EAEAEA;\r\n    \r\n    --ripple-color: #000000;\r\n  }\r\n`"
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "SecondaryButton",
-          "members": [
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Click Me!\"",
-              "privacy": "public",
-              "attribute": "text",
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleEvent",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleClick",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleAnimationEnd",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ],
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "privacy": "public",
-              "attribute": "disabled",
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "mouseDown",
-              "privacy": "public",
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "text",
-              "fieldName": "text",
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            },
-            {
-              "name": "disabled",
-              "fieldName": "disabled",
-              "inheritedFrom": {
-                "name": "BaseButton",
-                "module": "src/components/buttons/base-button.js"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "BaseButton",
-            "module": "/src/components/buttons/base-button.js"
-          },
-          "tagName": "secondary-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "styles",
-          "declaration": {
-            "name": "styles",
-            "module": "src/components/buttons/secondary-button/secondary-button.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "SecondaryButton",
-          "declaration": {
-            "name": "SecondaryButton",
-            "module": "src/components/buttons/secondary-button/secondary-button.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "secondary-button",
-          "declaration": {
-            "name": "SecondaryButton",
-            "module": "src/components/buttons/secondary-button/secondary-button.js"
           }
         }
       ]

@@ -10,6 +10,4 @@ webpack.config.cjs
 
 index.html
 
-dist/**
-
-src/styles/**
+src/**

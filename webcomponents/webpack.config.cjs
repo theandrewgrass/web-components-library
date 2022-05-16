@@ -7,7 +7,11 @@ module.exports = {
     rules: [
       {
         test: /\.(js)$/,
-        exclude: /node_modules/,
+        include: [ 
+          path.resolve(__dirname, 'src/**'), 
+          path.resolve(__dirname, 'node_modules/lit-element/**'), 
+          path.resolve(__dirname, 'node_modules/lit-html/**')
+        ],
         use: {
           loader: 'babel-loader',
         },
@@ -32,9 +36,9 @@ module.exports = {
     },
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'shared-components.js',
-    library: 'sharedComponents',
+    path: path.resolve(__dirname, 'lib'),
+    filename: 'index.js',
+    library: 'webcomponents',
     libraryTarget: 'umd',
   },
   externals: {
