@@ -9,8 +9,7 @@ module.exports = {
         test: /\.(js)$/,
         include: [ 
           path.resolve(__dirname, 'src/**'), 
-          path.resolve(__dirname, 'node_modules/lit-element/**'), 
-          path.resolve(__dirname, 'node_modules/lit-html/**')
+          path.resolve(__dirname, 'node_modules/lit/**')
         ],
         use: {
           loader: 'babel-loader',
@@ -33,6 +32,7 @@ module.exports = {
     alias: {
       Styles: path.resolve(__dirname, 'src/styles'),
       Components: path.resolve(__dirname, 'src/components'),
+      Controllers: path.resolve(__dirname, 'src/controllers'),
     },
   },
   output: {
@@ -40,9 +40,6 @@ module.exports = {
     filename: 'index.js',
     library: 'webcomponents',
     libraryTarget: 'umd',
-  },
-  externals: {
-    lit: 'lit',
   },
   optimization: {
     minimize: false

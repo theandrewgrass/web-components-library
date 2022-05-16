@@ -1,4 +1,4 @@
-import { RippleAnimation } from "../components/animations/ripple-animation.js";
+import { RippleAnimation } from "Components/animations/ripple-animation.js";
 
 /**
  * @class RippleController

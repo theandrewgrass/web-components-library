@@ -1,10 +1,8 @@
 {
   "name": "webcomponents",
-  "version": "1.1.0-beta.17",
+  "version": "1.1.0-beta.17-ktu3",
   "description": "",
   "main": "lib/index.js",
-  "type": "module",
-  "module": "lib/index.js",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",

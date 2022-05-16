@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { RippleController } from '../../controllers/ripple-controller.js';
+import { RippleController } from 'Controllers/ripple-controller.js';
 
 export const styles = css`
   :host {

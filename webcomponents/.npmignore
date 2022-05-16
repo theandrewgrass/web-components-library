@@ -1,13 +1,6 @@
 .storybook
 *.stories.mdx
 
-babel.config.cjs
-
-**/*.test.js
-jest.config.cjs
-
-webpack.config.cjs
-
-index.html
+webpack.config.js
 
 src/**
