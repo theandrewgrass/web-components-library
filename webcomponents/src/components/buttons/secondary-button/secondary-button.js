@@ -25,4 +25,5 @@ export class SecondaryButton extends BaseButton {
   static get styles() { return [super.styles, styles]; }
 }
 
-customElements.define('secondary-button', SecondaryButton);
+if (!customElements.get('secondary-button'))
+  customElements.define('secondary-button', SecondaryButton);

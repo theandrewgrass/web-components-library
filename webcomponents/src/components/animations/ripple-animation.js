@@ -66,4 +66,5 @@ export class RippleAnimation extends LitElement {
   }
 }
 
-customElements.define('ripple-animation', RippleAnimation);
+if (!customElements.get('ripple-animation'))
+  customElements.define('ripple-animation', RippleAnimation);

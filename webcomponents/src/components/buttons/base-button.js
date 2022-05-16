@@ -182,4 +182,5 @@ export class BaseButton extends LitElement {
   }
 }
 
-customElements.define('base-button', BaseButton);
+if (!customElements.get('base-button'))
+  customElements.define('base-button', BaseButton);

@@ -26,4 +26,5 @@ export class PrimaryButton extends BaseButton {
   static get styles() { return [super.styles, styles]; }
 }
 
-customElements.define('primary-button', PrimaryButton);
+if (!customElements.get('primary-button'))
+  customElements.define('primary-button', PrimaryButton);
