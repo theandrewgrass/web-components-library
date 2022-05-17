@@ -16,7 +16,7 @@ module.exports = {
   "framework": "@storybook/web-components",
   webpackFinal: async (config) => {
     config.resolve.alias['Components'] = path.resolve(__dirname, '../src/components');
-    config.resolve.alias['Styles'] = path.resolve(__dirname, '../src/styles');
+    config.resolve.alias['Controllers'] = path.resolve(__dirname, '../src/controllers');
     
     // resolves complaints from storybook about modules
     config.module.rules.push(

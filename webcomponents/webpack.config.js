@@ -30,7 +30,6 @@ module.exports = {
     extensions: ['', '.js', '.css'],
     modules: ['src', 'node_modules'],
     alias: {
-      Styles: path.resolve(__dirname, 'src/styles'),
       Components: path.resolve(__dirname, 'src/components'),
       Controllers: path.resolve(__dirname, 'src/controllers'),
     },
